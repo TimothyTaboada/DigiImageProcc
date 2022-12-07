@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,13 @@ namespace DigitalImageProcessing
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.Filter = "Do I look like I know what a jpeg is?|*.jpeg;";
             saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            processed.Save(saveFileDialog1.FileName, ImageFormat.Jpeg);
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
