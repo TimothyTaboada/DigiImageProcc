@@ -93,7 +93,52 @@ namespace DigitalImageProcessing
 
         private void histogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Bitmap temp = new Bitmap(loaded1.Width, loaded1.Height);
+            Color pixel;
+            processed = new Bitmap(256, 240);
 
+            // Greyscale
+            for (int x = 0; x < loaded1.Width; x++)
+            {
+                for (int y = 0; y < loaded1.Height; y++)
+                {
+                    pixel = loaded1.GetPixel(x, y);
+                    int grey = (pixel.R + pixel.G + pixel.B) / 3;
+                    Color greyscale = Color.FromArgb(grey, grey, grey);
+                    temp.SetPixel(x, y, greyscale);
+                }
+            }
+
+            // Histogram Array
+            int[] histogram = new int[256];
+            for (int x = 0; x < loaded1.Width; x++)
+            {
+                for (int y = 0; y < loaded1.Height; y++)
+                {
+                    pixel = loaded1.GetPixel(x, y);
+                    histogram[pixel.R]++;
+                }
+            }
+
+            // BG Colour
+            for (int x = 0; x < 256; x++)
+            {
+                for (int y = 0; y < 240; y++)
+                {
+                    processed.SetPixel(x, y, Color.White);
+                }
+            }
+
+            // Plot Points
+            for (int x = 0; x < 256; x++)
+            {
+                for (int y = 0; y < Math.Min(histogram[x] / 5, processed.Height - 1); y++)
+                {
+                    processed.SetPixel(x, (processed.Height - 1) - y, Color.Black);
+                }
+            }
+
+            pictureBox3.Image = processed;
         }
 
         private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
