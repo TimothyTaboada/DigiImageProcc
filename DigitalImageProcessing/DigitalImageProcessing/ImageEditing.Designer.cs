@@ -33,6 +33,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setImage1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setImage2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +59,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(12, 89);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(352, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -65,6 +68,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(428, 89);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(352, 240);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -90,13 +94,31 @@
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setImage1ToolStripMenuItem,
+            this.setImage2ToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // setImage1ToolStripMenuItem
+            // 
+            this.setImage1ToolStripMenuItem.Name = "setImage1ToolStripMenuItem";
+            this.setImage1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setImage1ToolStripMenuItem.Text = "Set Image 1";
+            this.setImage1ToolStripMenuItem.Click += new System.EventHandler(this.setImage1ToolStripMenuItem_Click);
+            // 
+            // setImage2ToolStripMenuItem
+            // 
+            this.setImage2ToolStripMenuItem.Name = "setImage2ToolStripMenuItem";
+            this.setImage2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setImage2ToolStripMenuItem.Text = "Set Image 2";
+            this.setImage2ToolStripMenuItem.Click += new System.EventHandler(this.setImage2ToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -155,22 +177,19 @@
             // loadImage1ToolStripMenuItem
             // 
             this.loadImage1ToolStripMenuItem.Name = "loadImage1ToolStripMenuItem";
-            this.loadImage1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadImage1ToolStripMenuItem.Text = "Load Image 1";
-            this.loadImage1ToolStripMenuItem.Click += new System.EventHandler(this.loadImage1ToolStripMenuItem_Click);
+            this.loadImage1ToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // loadImage2ToolStripMenuItem
             // 
             this.loadImage2ToolStripMenuItem.Name = "loadImage2ToolStripMenuItem";
-            this.loadImage2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadImage2ToolStripMenuItem.Text = "Load Image 2";
-            this.loadImage2ToolStripMenuItem.Click += new System.EventHandler(this.loadImage2ToolStripMenuItem_Click);
+            this.loadImage2ToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(839, 89);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(352, 240);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             // 
@@ -220,6 +239,8 @@
         private System.Windows.Forms.ToolStripMenuItem loadImage2ToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.ToolStripMenuItem setImage1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setImage2ToolStripMenuItem;
     }
 }
 
