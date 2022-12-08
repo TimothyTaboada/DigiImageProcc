@@ -171,6 +171,32 @@ namespace DigitalImageProcessing
                     processed.SetPixel(x, y, greyscale);
                 }
             }
+
+            pictureBox3.Image = processed;
+        }
+
+        private void subtractToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            processed = new Bitmap(loaded1.Width, loaded1.Height);
+            Color greenScreen = Color.FromArgb(0, 0, 255);
+            int greyGreen = (greenScreen.R + greenScreen.G + greenScreen.B) / 3;
+            int threshold = 5;
+
+            for (int x = 0; x < loaded1.Width; x++)
+            {
+                for (int y = 0; y < loaded1.Height; y++)
+                {
+                    Color pixel = loaded2.GetPixel(x, y);
+                    Color backPixel = loaded1.GetPixel(x, y);
+                    int grey = (backPixel.R + backPixel.G + backPixel.B) / 3;
+                    int subtractVal = Math.Abs(grey - greyGreen);
+                    if(subtractVal > threshold)
+                        processed.SetPixel(x, y, backPixel);
+                    else
+                        processed.SetPixel(x, y, pixel);
+                }
+            }
+
             pictureBox3.Image = processed;
         }
     }
