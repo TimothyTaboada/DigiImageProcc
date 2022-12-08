@@ -143,7 +143,35 @@ namespace DigitalImageProcessing
 
         private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            processed = new Bitmap(loaded1.Width, loaded1.Height);
 
+            for (int x = 0; x < loaded1.Width; x++)
+            {
+                for (int y = 0; y < loaded1.Height; y++)
+                {
+                    Color pixel = loaded1.GetPixel(x, y);
+                    int sephiRed = (int)((0.393 * pixel.R) + (0.769 * pixel.G) + (0.189 * pixel.B));
+                    int sephiBlue = (int)((0.349 * pixel.R) + (0.686 * pixel.G) + (0.168 * pixel.B));
+                    int sephiGreen = (int)((0.272 * pixel.R) + (0.534 * pixel.G) + (0.131 * pixel.B));
+
+                    if(sephiRed > 255)
+                    {
+                        sephiRed = 255;
+                    }
+                    if(sephiBlue > 255)
+                    {
+                        sephiBlue = 255;
+                    }
+                    if(sephiGreen > 255)
+                    {
+                        sephiGreen = 255;
+                    }
+
+                    Color greyscale = Color.FromArgb(sephiRed, sephiBlue, sephiGreen);
+                    processed.SetPixel(x, y, greyscale);
+                }
+            }
+            pictureBox3.Image = processed;
         }
     }
 }
